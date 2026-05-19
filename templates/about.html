@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Webiste - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+
+
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+        
+        </nav>
+    </header>
+
+
+    <nav>
+        <a href="{{url_for('index') }}">Login</a>  |
+        <a href="{{url_for('register') }}">Register</a>
+       
+    </nav>
+
+    <main>
+
+        <div class="container">
+            
+            <div class="page-title">
+                <h2>About the Project</h2>
+                <p>Smart academic management with a modern tech experience</p>
+            </div>
+
+            <div class="content-box">
+
+                <h3>Project Overview</h3>
+                <p>
+                    The <strong>College Management System (CAMS)</strong> is a web-based platform designed to simplify 
+                    communication and academic task handling between students and faculty. It provides a unified portal 
+                    for managing assignments, notices, and academic updates in a smooth, organized, and digital way.
+                </p>
+
+                <h3>Objective</h3>
+                <p>
+                    The main objective of this project is to build a simple, reliable, and user-friendly system that 
+                    reduces paperwork, saves time, and improves academic workflow using modern web technologies.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul class="info-list">
+                    <li>Secure login system for students and faculty</li>
+                    <li>Faculty can upload assignments and notices</li>
+                    <li>Students can view and submit assignments</li>
+                    <li>Digital notice board for announcements</li>
+                    <li>Separate dashboards for faculty and students</li>
+                    <li>Lightweight and fast SQLite database</li>
+                </ul>
+
+                <h3>Technologies Used</h3>
+                <table>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Technology</th>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>HTML, CSS, JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Backend</td>
+                        <td>Python (Flask Framework)</td>
+                    </tr>
+                    <tr>
+                        <td>Database</td>
+                        <td>SQLite</td>
+                    </tr>
+                    <tr>
+                        <td>Tools</td>
+                        <td>VS Code, DB Browser for SQLite</td>
+                    </tr>
+                </table>
+
+                <h3>Future Scope</h3>
+                <ul class="info-list">
+                    <li>Marks & grading module</li>
+                    <li>Email notification system</li>
+                 
+                    <li>Attendance tracking system</li>
+                </ul>
+
+                <h3>Developer Info</h3>
+                <p>
+                    <strong>Developed by:</strong> Dhanashree and Akshada <br>
+                    <strong>Course:</strong> BSc Computer Science <br>
+                    <strong>Academic Year:</strong> 2025-26 <br>
+                    <strong>Project Type:</strong> Mini Project - Web Development
+                </p>
+
+            </div>
+
+        </div>
+    </main>
+
+       
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

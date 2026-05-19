@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="/student/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Notices</h2>
+                <p>View important announcements and updates shared by faculty.</p>
+            </div>
+            
+            <section class="content-box">
+                {% if notices %}
+                    <ul>
+                        {% for n in notices %}
+                            <li>
+                                <strong>{{ n['title'] }} </strong><br>
+                                {{ n['message'] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No notices available.</p>
+                {% endif %}
+                
+
+            </section>
+
+            <div class="cards">
+                <a href="/student/assignments" class="card-link">
+                    <div class="card"> 
+                        View Assignments
+                    </div>
+                </a>
+                <a href="/student/submit" class="card-link">
+                    <div class="card">
+                        Submit Assignments
+                    </div>
+                </a>
+                <a href="/student/planner" class="card-link">
+                    <div class="card">
+                        Study Planner
+                    </div>
+                </a>
+            </div>
+
+        </div>  
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Academic Management System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="{{ url_for('about') }}">About</a> | 
+            <a href="{{ url_for('register') }}">Register</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+  
+        <section class="home">
+             <p style="color: lightseagreen;">
+                {{get_flashed_messages()[0] if get_flashed_messages() else " "}}
+            </p>
+          
+            <h2>Welcome to College Academic Management System</h2>
+            <p class="tagline">
+                A smart digital platform to manage notices, assignments and academic workflow efficiently.
+            </p>
+
+            <div class="cards">
+                <div class="card">Digital Notices</div>
+                <div class="card">Assignment System</div>
+                <div class="card">Student Dashboard</div>
+                <div class="card">Faculty Dashboard</div>
+            </div>
+        </section>
+
+
+        <section class="login-box">
+            <h2>Login to Continue</h2>
+
+            {% if error %}
+                <p style="color: lightseagreen; text-align:center;">{{ error }}</p>
+            {% endif %}
+
+            <form action="/login" method="POST">
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+
+                <label>Role</label>
+                <select name="role" required>
+                    <option value="">Select role</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+            <p class="register-link">
+                Don’t have an account?
+                <a href="{{ url_for('register') }}">Register here</a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Academic Management System</p>
+    </footer>
+
+</body>
+</html>

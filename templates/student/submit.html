@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+
+    <main> 
+        <div class="container">
+            <a href="/student/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Submit Assignment</h2> 
+                <p>Upload your assignment files before the ssubmission deadline</p>
+            </div>
+
+
+            <section class="content-box">
+                <form method="post" enctype="multipart/form-data">
+                    <label>Select Assignment</label><br>
+
+                    <select name="assignment_id" required>
+                        <option value="">-- Select Assignment --</option>
+                        {% for a in assignments %}
+                            <option value="{{ a['id'] }}"  {% if selected_id and selected_id|int == a.id %} selected {% endif %}> 
+                                {{ a['title'] }}
+                            </option>
+                        {% endfor %}
+                    </select> <br><br>
+                    <label>Upload File</label><br>
+                    <input type="file" name="file" required><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+                
+            </section>
+                       
+            
+            <div class="cards">
+                <a href="/student/notices" class="card-link">
+                    <div class="card">
+                        View Notices
+                    </div>
+                </a>
+                <a href="/student/assignments" class="card-link">
+                    <div class="card">
+                            View Assignments
+                    </div>
+                </a>
+                <a href="/student/planner" class="card-link">
+                    <div class="card">
+                        Study Planner
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

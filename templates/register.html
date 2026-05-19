@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+
+</head>
+<body>
+
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+   
+        </nav>
+    </header>
+
+
+    <nav>
+        <a href="{{url_for('index') }}">Login</a>  |
+     
+        <a href="{{url_for('about') }}">About</a> 
+    </nav>
+
+    <main>
+        <div class="container"> 
+            <section>
+                <h2> Registration</h2>
+
+                <form action="/register" method="POST">
+                    <label>Name</label><br>
+                    <input type="text" name="name" required><br><br>
+
+                    <label>Email</label><br>
+                    <input type="email" name="email"required> <br><br>
+
+                    <label>Password</label><br>
+                    <input type="password" name="password"required> <br><br>
+
+                    <label>Role</label><br>
+                    <select name="role" required>
+                        <option value="">Select role</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                    </select><br><br>
+
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>
+
+

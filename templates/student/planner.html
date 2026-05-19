@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+   
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="/student/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Study Planner</h2>
+                <p>Plan and manage your daily study tasks efficiently</p> 
+            </div>
+
+            
+            <section class="content-box">
+            <p style="color: seagreen;">
+                {{get_flashed_messages()[0] if get_flashed_messages() else " "}}
+            </p>
+
+                <!-- {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <p style="color: green; font-weight: bold;">{{ msg }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %} -->
+                 
+                <h2>Study Planner</h2>
+                <form method="post" action="/student/planner">
+                    <label>Task</label><br>
+                    <input type="text" name="task" required ><br><br>
+
+                    <label>Date</label><br>
+                    <input type="date" name="task_date" required><br><br>
+
+                    <button type="submit">Add Task</button>
+                </form>
+
+                <h2>Your Tasks</h2>
+
+                {% if tasks %}
+                    <ul>
+                        {% for t in tasks %}
+                            <li style="margin-bottom: 10px;">
+                                <strong>{{ t['task'] }}</strong> 
+                                <span style="color: #ff9f43;">({{ t['task_date'] }})</span>
+
+                                <!-- delete button -->
+                                <a href="{{ url_for('delete_task', task_id=t['id']) }}" 
+                                style="color: red; margin-left: 10px;">
+                                    Delete
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No tasks yet.</p>
+                {% endif %}
+            </section>
+
+            <div class="cards">
+                <a href="/student/notices" class="card-link">
+                    <div class="card">
+                        View Notices
+                    </div>
+                </a>
+                <a href="/student/assignments" class="card-link">
+                    <div class="card">
+                        View Assignments
+                    </div>
+                </a>
+                <a href="/student/submit" class="card-link">
+                    <div class="card">
+                        Submit Assignments
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

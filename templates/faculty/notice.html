@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    
+    <main>
+        <div class="container">
+            <a href="/faculty/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Manage Notices</h2>
+                <p>Create and publish important notices for students..</p>
+            </div>
+            
+            <section class="content-box">
+                <h4>Upload Notice</h4>
+                <form method="POST">
+                    <label>Notice Title</label><br>
+                    <input type="text" name="title" required><br><br>
+
+                    <label>Notice Description</label><br>
+                    <textarea name="message"  rows="4" required></textarea><br><br>
+
+                    <button type="submit">Upload</button>
+                </form>
+            </section>
+
+            <div class="cards">
+                <a href="/faculty/assignment" class="card-link">
+                    <div class="card">
+                        Create Assignments
+                    </div>
+                </a>
+                <a href="/faculty/submissions" class="card-link">
+                    <div class="card">
+                        View Submissions
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

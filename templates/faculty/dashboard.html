@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="container">
+             <p style="color: lightseagreen;">
+                {{get_flashed_messages()[0] if get_flashed_messages() else " "}}
+            </p>
+
+
+    
+            <h3>Welcome {{ session.name }} </h3>
+            <div class="page-title">
+                <h2>Faculty Dashboard</h2>
+                <p>Manage academic activities, assignments and student engagement.</p>
+            </div>
+
+        
+            <section class="content-box">
+                <h3>Dashboard Overview</h3>
+                <ul class="info-list">
+                    <li>Post important academic notices instantly.</li>
+                    <li>Create assignments and track student submissions.</li>
+                    <li>Monitor academic progress efficiently.</li>
+                    <li>Maintain centralized academic workflow.</li>
+                </ul>
+          
+           
+                <h3>Faculty Tips</h3>
+                <p>
+                    Keep notices clear and concise. Set assignment deadlines early and encourage timely submissions for smooth academic planning.
+                </p>
+
+            </section>
+
+            <div class="cards">
+                <a href="/faculty/notice" class="card-link">
+                    <div class="card">Upload Notices</div>
+                </a>
+
+                <a href="/faculty/assignment" class="card-link">
+                    <div class="card">Create Assignments</div>
+                </a>
+
+                <a href="/faculty/submissions" class="card-link">
+                    <div class="card">View Submissions</div>
+                </a>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

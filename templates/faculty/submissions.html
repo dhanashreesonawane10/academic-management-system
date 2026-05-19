@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+
+
+  
+    <main>
+        <div class="container">
+            <a href="/faculty/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Assignment Submissions</h2>
+                <p>View and evaluate assignments submitted by students. </p>
+            </div>
+            
+            <section class="content-box">
+                <h2>Student Submissions</h2>
+
+                {% if submissions %}
+                <table border="1">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Assignment Title</th>
+                        <th>Submitted On</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>File</th>
+                    </tr>
+
+                    {% for s in submissions %}
+                    <tr>
+                        <td>{{ s.student }}</td>
+                        <td>{{ s.title }}</td>
+                        <td>{{ s.submitted_on }}</td>
+                        <td>{{ s.due_date }}</td>
+                        <td>{{ s.status }}</td>
+                        <td>
+                            {% if s.file %}
+                                <a href="{{ url_for('static', filename='uploads/' + s.file) }}" target="_blank">
+                                    View File
+                               </a>
+                            {% else %}
+                                No File
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <p>No Submissions yet.</p>
+                {% endif %}
+            </section>
+
+            <div class="cards">
+                <a href="/faculty/notice" class="card-link">
+                    <div class="card">
+                        Upload Notices
+                    </div>                    
+                </a>
+                <a href="/faculty/assignment" class="card-link">
+                    <div class="card">
+                        Create Assignments
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - CAMS</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js')}}" ></script>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>College Management System</h1>
+            <p>Unified Portal for Students and Faculty</p>
+        </div>
+
+        <nav>
+            <a href="javascript:history.back()"><- Back</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            <a href="/student/dashboard" class="back-btn"><-Back to Dashboard</a>
+            <div class="page-title">
+                <h2>Assignments</h2>
+                <p>View Assignments provided by faculty along with deadlines</p>
+            </div>
+            
+            <section class="content-box">
+            <p style="color: lightseagreen;">
+                {{get_flashed_messages()[0] if get_flashed_messages() else " "}}
+            </p>
+
+                <!-- {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for msg in messages %}
+                        <p style="color: orangered;">{{ msg }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% if assignments %} -->
+                    <ul>
+                        {% for a in assignments %}
+                            <li>
+                                <strong>{{ a.title }} </strong><br>
+                                {{ a.description }} <br>
+                                <span style="color: #ff3939;">
+                                    Deadline: {{ a.due_date}}
+                                </span> <br>
+                                Status: {{ a.deadline_status }}
+                                <br>
+
+                                {% if a.file and a.file !="" %}
+                                    <a href="{{url_for('static', filename='uploads/' +a.file) }}" target="_blank">
+                                        View File 
+                                    </a>
+                                {% else %}
+                                    <span style="color: grey;">No File</span>
+                                {% endif%} <br>
+
+                                <!-- Submission status -->
+                                {% if a.submit_status == "Submitted" %}
+                                    <span style="color: green; font-weight: bold;">
+                                        Already Submitted
+                                    </span>
+                                {% else %}
+                                    <a href="{{ url_for('student_submit', assignment_id=a.id) }}">
+                                        <button>
+                                            Submit
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %} 
+                    </ul>
+                    {% else %}
+                    <p>No assignments available.</p>
+                {% endif %}
+            </section>
+
+            <div class="cards">
+                <a href="/student/notices" class="card-link">
+                    <div class="card">
+                        View Notices
+                    </div>
+                </a>
+                <a href="/student/submit" class="card-link">
+                    <div class="card">
+                        Submit Assignments
+                    </div>
+                </a>
+                <a href="/student/planner" class="card-link">
+                    <div class="card"> Study Planner </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 College Portal</p>
+    </footer>
+    
+</body>
+</html> 
